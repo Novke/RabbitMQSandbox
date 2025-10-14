@@ -8,17 +8,17 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//@Service
+@Service
 @Slf4j
-public class EmployeeJsonConsumer {
+public class AccountingConsumer {
 
     @Autowired
     private ObjectMapper objectMapper;
 
-    @RabbitListener(queues = "course.employee")
+    @RabbitListener(queues = "q.hr.accounting")
     public void receiveMessage(String message) throws JsonProcessingException {
         var emp = objectMapper.readValue(message, Employee.class);
-        log.info("Received Employee: {}", emp);
+        log.info("Accounting Received Employee: {}", emp);
     }
 
 }
