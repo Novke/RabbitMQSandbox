@@ -1,14 +1,16 @@
 package com.sandbox.rabbit.consumer.consumer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
-//@Service
-public class HelloRabbitConsumer {
+@Service
+@Slf4j
+public class FixedRateConsumer {
 
-    @RabbitListener(queues = "course.hello")
+    @RabbitListener(queues = "course.fixedrate")
     public void listen(String message){
-        System.out.println("Consuming: " + message);
+        log.info("Consumed message: {}", message);
     }
 
 }
