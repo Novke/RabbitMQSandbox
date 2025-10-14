@@ -15,10 +15,10 @@ public class FixedRateProducer {
 
     private int i = 0;
 
-    @Scheduled(fixedRate = 1000) //milisekunde
+    @Scheduled(fixedRate = 500) //milisekunde
     public void sendMessage(){
         i++;
-        log.info("i is: " + i);
+//        log.info("i is: " + i);
         rabbitTemplate.convertAndSend("course.fixedrate", "Fixed rate : " + i);
     }
 
